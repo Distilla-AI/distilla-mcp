@@ -4,6 +4,7 @@
   "displayName": "Distilla",
   "version": "1.0.0",
   "description": "Connect Claude to Distilla for fundamental equity research.",
+  "icon": "./icon.png",
   "author": {
     "name": "Distilla, Inc.",
     "email": "support@distilla.ai",
