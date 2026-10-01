@@ -1,15 +1,11 @@
 {
-  "$schema": "https://developers.openai.com/plugins/schemas/chatgpt-app-submission.v1.json",
+  "$schema": "https://developers.openai.com/apps-sdk/schemas/chatgpt-app-submission.v1.json",
   "schema_version": 1,
   "app_info": {
     "display_name": "Distilla",
     "subtitle": "Fundamental equity research",
     "description": "Research public companies with Distilla's financial data, earnings information, company driver screens, and Public Library. Explore available datasets, query and aggregate company data, run qualitative screens across selected companies or regions, and find research documents with source details. A Distilla account is required. Screen requests create jobs that may take time to complete; other research calls also count against account usage.",
-    "category": "FINANCE",
-    "website_url": "https://agents.distilla.ai",
-    "support_url": "https://www.distilla.ai/contact-us",
-    "privacy_policy_url": "https://www.distilla.ai/privacy-policy",
-    "terms_of_service_url": "https://www.distilla.ai/terms-conditions"
+    "category": "FINANCE"
   },
   "tools": {
     "ping": {

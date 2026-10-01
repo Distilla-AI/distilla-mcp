@@ -19,6 +19,7 @@ jobs:
       - name: Validate JSON files
         run: |
           python3 -m json.tool .claude-plugin/plugin.json > /dev/null
+          python3 -m json.tool .codex-plugin/plugin.json > /dev/null
           python3 -m json.tool .mcp.json > /dev/null
       - name: Run claude plugin validate
         run: npx --yes @anthropic-ai/claude-code@latest plugin validate .

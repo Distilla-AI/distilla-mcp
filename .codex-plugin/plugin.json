@@ -1,0 +1,97 @@
+{
+  "name": "distilla",
+  "version": "1.0.0",
+  "description": "Connect to Distilla for fundamental equity research.",
+  "author": {
+    "name": "Distilla, Inc.",
+    "email": "support@distilla.ai",
+    "url": "https://www.distilla.ai"
+  },
+  "homepage": "https://www.distilla.ai",
+  "repository": "https://github.com/Distilla-AI/mcp-api-plugin",
+  "license": "MIT",
+  "keywords": ["equity-research", "fundamental-investing", "mcp"],
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Distilla",
+    "shortDescription": "Fundamental equity research",
+    "longDescription": "Research public companies with Distilla's financial data, earnings information, company driver screens, and Public Library. Explore available datasets, query and aggregate company data, run qualitative screens across selected companies or regions, and find research documents with source details. A Distilla account is required. Screen requests create jobs that may take time to complete; other research calls also count against account usage.",
+    "developerName": "Distilla, Inc.",
+    "category": "Finance",
+    "capabilities": [
+      "Query company data",
+      "Run company screens",
+      "Search Public Library"
+    ],
+    "websiteURL": "https://agents.distilla.ai",
+    "supportURL": "https://www.distilla.ai/contact-us",
+    "privacyPolicyURL": "https://www.distilla.ai/privacy-policy",
+    "termsOfServiceURL": "https://www.distilla.ai/terms-conditions",
+    "defaultPrompt": [
+      "Summarize NVIDIA's price moves with Distilla and reasons over the last 3 months and establish patterns.",
+      "Count US-headquartered companies by sector in Distilla and show the 15 largest groups.",
+      "Find recent Public Library research about NVIDIA AI data-center demand."
+    ],
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png"
+  },
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Summarize recorded stock price moves and their explanations through schema-guided entity queries. Requires a demo account with company and price explanation data.",
+              "prompt": "Summarize NVIDIA's price moves with Distilla and reasons over the last 3 months and establish patterns.",
+              "tools_triggered": "list_queryable_entities, describe_queryable_entities, query_entity",
+              "expected_behavior": "Resolve NVIDIA's company ID, then query price_explanation rows for that company over an absolute three-month date range. Summarize the recorded moves and their stated reasons, and identify recurring patterns supported by the rows. Explain if no rows match or if the result is truncated."
+            },
+            {
+              "description": "Aggregate company records by sector using the entity schema. Requires a demo account with company and sector data.",
+              "prompt": "Count US-headquartered companies by sector in Distilla and show the 15 largest groups.",
+              "tools_triggered": "list_queryable_entities, describe_queryable_entities, aggregate_entity",
+              "expected_behavior": "Up to 15 sector groups with counts, based on an allowed company entity, valid country filter, and schema-supported sector grouping or join. Explain that the result is one page and may be truncated."
+            },
+            {
+              "description": "Start a qualitative driver screen and poll its job. Requires a demo account entitled to screening with screen jobs enabled.",
+              "prompt": "Which US companies rely on AI hyperscaler capital spending as a main growth driver? Screen them and show the strongest matches.",
+              "tools_triggered": "screen_drivers, get_screen_job",
+              "expected_behavior": "The screen call first returns a job_id and queued status. Poll that job until done or error; on success summarize the matches, ranked companies, and coverage without claiming the queued response is a completed screen."
+            },
+            {
+              "description": "List recent Public Library podcasts and compare guest views with sell-side research. Requires a demo account with Public Library access, at least one podcast, and related research documents.",
+              "prompt": "List the latest Distilla podcasts in the Public Library and flag any where the guest's view seems to conflict with recent sell side consensus.",
+              "tools_triggered": "search_public_library, get_library_document",
+              "expected_behavior": "List recent Podcast documents from search results with titles and publication dates. Compare each guest's main view with recent Research documents on the same topics, and flag only conflicts that the returned sources support. Do not claim full Research document text is available; explain if no podcasts or comparable research exist."
+            },
+            {
+              "description": "Search the bounded Public Library and inspect one returned document. Requires a demo account with Public Library access and at least one matching document.",
+              "prompt": "Find recent Public Library research about NVIDIA AI data-center demand. Summarize the common points and show the summary and tags for one source document.",
+              "tools_triggered": "search_public_library, get_library_document",
+              "expected_behavior": "A sourced summary plus one returned document's metadata, summary, and tags. Use a document_id from search results. Do not claim full Research document text is available; explain if no matching source exists."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unrelated messaging request; no Distilla tool can send messages.",
+              "prompt": "Send an email to my team with today's meeting notes."
+            },
+            {
+              "description": "Private document request; the MCP library tools only expose available Public Library documents.",
+              "prompt": "Open the private research report I uploaded to Distilla yesterday and paste its full text here."
+            },
+            {
+              "description": "Unsupported trading action; all exposed tools are research and screening tools.",
+              "prompt": "Buy 100 shares of NVIDIA in my brokerage account now."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
+      },
+      "publication": {
+        "release_notes": "Initial Distilla release with company data queries, aggregates, driver and earnings screens, and Public Library search."
+      }
+    }
+  }
+}
