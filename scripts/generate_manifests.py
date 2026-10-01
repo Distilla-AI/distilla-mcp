@@ -24,7 +24,13 @@ TARGETS = {
     "claude": ROOT / ".claude-plugin" / "plugin.json",
     "codex": ROOT / ".codex-plugin" / "plugin.json",
     "chatgpt": ROOT / "chatgpt-app-submission.json",
+    "registry": ROOT / "server.json",
 }
+
+REGISTRY_SCHEMA = (
+    "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json"
+)
+REGISTRY_DESCRIPTION_MAX = 100
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -56,9 +62,7 @@ def project_mcp(core: dict[str, Any], existing: dict[str, Any]) -> dict[str, Any
 def project_claude(core: dict[str, Any], existing: dict[str, Any]) -> dict[str, Any]:
     out = dict(existing) if existing else {}
     if "$schema" not in out:
-        out["$schema"] = (
-            "https://json.schemastore.org/claude-code-plugin-manifest.json"
-        )
+        out["$schema"] = "https://json.schemastore.org/claude-code-plugin-manifest.json"
     out["name"] = core["id"]
     out["displayName"] = core["displayName"]
     out["version"] = core["version"]
@@ -110,11 +114,46 @@ def project_chatgpt(core: dict[str, Any], existing: dict[str, Any]) -> dict[str,
     return out
 
 
+def project_registry(core: dict[str, Any], existing: dict[str, Any]) -> dict[str, Any]:
+    """Official MCP Registry server.json (full file from SoT; no platform overlay)."""
+    del existing  # entire file is generated
+    registry = core["registry"]
+    description = registry["description"]
+    if len(description) > REGISTRY_DESCRIPTION_MAX:
+        raise ValueError(
+            f"registry.description must be ≤{REGISTRY_DESCRIPTION_MAX} chars "
+            f"(got {len(description)})"
+        )
+    agents = core["urls"]["agents"].rstrip("/") + "/"
+    return {
+        "$schema": REGISTRY_SCHEMA,
+        "name": registry["name"],
+        "title": core["chatgptDisplayName"],
+        "description": description,
+        "version": core["version"],
+        "websiteUrl": agents,
+        "icons": [
+            {
+                "src": registry["iconUrl"],
+                "mimeType": "image/png",
+                "sizes": [registry["iconSizes"]],
+            }
+        ],
+        "remotes": [
+            {
+                "type": "streamable-http",
+                "url": core["urls"]["mcp"],
+            }
+        ],
+    }
+
+
 PROJECTORS = {
     "mcp": project_mcp,
     "claude": project_claude,
     "codex": project_codex,
     "chatgpt": project_chatgpt,
+    "registry": project_registry,
 }
 
 

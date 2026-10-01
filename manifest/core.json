@@ -44,5 +44,11 @@
     "chatgpt": "FINANCE"
   },
   "icon": "./assets/icon.png",
-  "defaultEnabled": false
+  "defaultEnabled": false,
+  "registry": {
+    "name": "ai.distilla/mcp",
+    "description": "Grounded financial research for agents: filings, transcripts, news across US and Asia markets.",
+    "iconUrl": "https://agents.distilla.ai/icon.png",
+    "iconSizes": "64x64"
+  }
 }

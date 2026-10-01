@@ -21,6 +21,7 @@ Plugin and app metadata is duplicated across:
 | `.claude-plugin/plugin.json` | Anthropic / Claude Code plugin |
 | `.codex-plugin/plugin.json` | OpenAI Codex plugin (+ `com.openai` review block) |
 | `chatgpt-app-submission.json` | ChatGPT Apps SDK submission |
+| `server.json` | Official MCP Registry card (`ai.distilla/mcp`) — fully generated |
 
 Shared fields (version, display name, short/long description, author, keywords, URLs) are hand-copied. They already drift (e.g. Claude `1.0.2` vs Codex `1.0.0`; ChatGPT display name `Distilla` vs Claude/Codex `Distilla Investment Research`).
 
@@ -50,11 +51,12 @@ scripts/generate_manifests.py
 .claude-plugin/plugin.json
 .codex-plugin/plugin.json
 chatgpt-app-submission.json
+server.json                 ← Official MCP Registry (full file from SoT)
 ```
 
 CI runs `python3 scripts/generate_manifests.py --check` (fails when outputs would change).
 
-v1 does not use separate overlay files; platform-only blobs stay in the committed targets and survive merge-style regenerate.
+v1 does not use separate overlay files for Claude / Codex / ChatGPT; platform-only blobs stay in those committed targets and survive merge-style regenerate. **`server.json` has no overlay** — the entire file is projected from SoT.
 
 ## SoT schema (`manifest/core.json`)
 
@@ -89,28 +91,35 @@ Optional:
 | `icon` | Relative path to icon (existing `./assets/icon.png`) |
 | `defaultEnabled` | Claude `defaultEnabled` |
 | `defaultPrompts` | Codex / ChatGPT default prompts (if shared) |
+| `registry.name` | Official Registry namespace (`ai.distilla/mcp`) |
+| `registry.description` | Registry short description (≤100 chars) |
+| `registry.iconUrl` | Public HTTPS icon for the registry card |
+| `registry.iconSizes` | Icon sizes string (e.g. `64x64`) |
 
 ### Field mapping (generator)
 
-| SoT | `.mcp.json` | Claude | Codex | ChatGPT |
-| --- | --- | --- | --- | --- |
-| `id` | `mcpServers` key | `name` | `name` | — |
-| `displayName` | — | `displayName` | `interface.displayName` | — |
-| `chatgptDisplayName` | — | — | — | `app_info.display_name` |
-| `version` | — | `version` | `version` | if schema allows; else omit |
-| `subtitle` | — | — | `interface.shortDescription` | `app_info.subtitle` |
-| `descriptionShort` | — | `description` | `description` | — |
-| `descriptionLong` | — | — | `interface.longDescription` | `app_info.description` |
-| `urls.mcp` | `mcpServers.distilla.url` | — | — | — |
-| `urls.homepage` | — | `homepage` | `homepage` | — |
-| `urls.agents` | — | — | `interface.websiteURL` | — |
-| `urls.repository` | — | `repository` | `repository` | — |
-| `urls.support` | — | — | `interface.supportURL` | if schema allows |
-| `urls.privacy` | — | — | `interface.privacyPolicyURL` | if schema allows |
-| `urls.terms` | — | — | `interface.termsOfServiceURL` | if schema allows |
-| `author.*` | — | `author` | `author` | — |
-| `keywords` | — | `keywords` | `keywords` | — |
-| `license` | — | `license` | `license` | — |
+| SoT | `.mcp.json` | Claude | Codex | ChatGPT | `server.json` |
+| --- | --- | --- | --- | --- | --- |
+| `id` | `mcpServers` key | `name` | `name` | — | — |
+| `displayName` | — | `displayName` | `interface.displayName` | — | — |
+| `chatgptDisplayName` | — | — | — | `app_info.display_name` | `title` |
+| `version` | — | `version` | `version` | if schema allows; else omit | `version` |
+| `subtitle` | — | — | `interface.shortDescription` | `app_info.subtitle` | — |
+| `descriptionShort` | — | `description` | `description` | — | — |
+| `descriptionLong` | — | — | `interface.longDescription` | `app_info.description` | — |
+| `urls.mcp` | `mcpServers.distilla.url` | — | — | — | `remotes[0].url` |
+| `urls.homepage` | — | `homepage` | `homepage` | — | — |
+| `urls.agents` | — | — | `interface.websiteURL` | — | `websiteUrl` |
+| `urls.repository` | — | `repository` | `repository` | — | — |
+| `urls.support` | — | — | `interface.supportURL` | if schema allows | — |
+| `urls.privacy` | — | — | `interface.privacyPolicyURL` | if schema allows | — |
+| `urls.terms` | — | — | `interface.termsOfServiceURL` | if schema allows | — |
+| `author.*` | — | `author` | `author` | — | — |
+| `keywords` | — | `keywords` | `keywords` | — | — |
+| `license` | — | `license` | `license` | — | — |
+| `registry.name` | — | — | — | — | `name` |
+| `registry.description` | — | — | — | — | `description` |
+| `registry.iconUrl` / `iconSizes` | — | — | — | — | `icons[0]` |
 
 Platform-only content (not in SoT v1):
 
@@ -137,11 +146,13 @@ Platform-only content (not in SoT v1):
 6. OpenAI review / ChatGPT tool annotation blocks survive regeneration unchanged unless overlays change.
 7. CI fails if someone hand-edits a generated shared field without updating SoT + regenerating.
 8. `claude plugin validate` still passes.
+9. `server.json` `remotes[0].url` equals `urls.mcp`, `websiteUrl` equals `urls.agents` (with trailing `/`), `version` matches SoT, and `registry.description` is ≤100 chars.
+10. Publishing to the Official Registry uses `mcp-publisher publish ./server.json` from this repo (not `mcp-api-web`).
 
 ## Out of scope (later)
 
 - Auto-sync README “What you can do” from SoT
-- Publishing well-known MCP server-card from this repo
+- Hosting `/.well-known/mcp.json` from this repo (that stays on agents.distilla.ai / `mcp-api-web`)
 - Generating ChatGPT tool list from live MCP `tools/list`
 
 ## Resolved decisions
