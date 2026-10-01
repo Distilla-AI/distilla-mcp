@@ -3,8 +3,8 @@
   "schema_version": 1,
   "app_info": {
     "display_name": "Distilla",
-    "subtitle": "Fundamental equity research",
-    "description": "Research public companies with Distilla's financial data, earnings information, company driver screens, and Public Library. Explore available datasets, query and aggregate company data, run qualitative screens across selected companies or regions, and find research documents with source details. A Distilla account is required. Screen requests create jobs that may take time to complete; other research calls also count against account usage.",
+    "subtitle": "Financial analysis and equity research",
+    "description": "Distilla brings financial analysis and fundamental equity research to your AI assistant. Look up public-company fundamentals (financial statement line items and ratios), analyst consensus estimates, earnings dates, earnings filings and call transcripts, daily stock prices, and valuation multiples such as P/E and EV/EBITDA. See explanations for significant stock price moves, compare competitive peers by sector and product category, and run qualitative stock screens on business drivers or earnings-call commentary across selected companies or regions. Search Distilla's Public Library of research documents and investing podcasts, with source details. A Distilla account is required. Screen requests create jobs that may take time to complete; other research calls also count against account usage.",
     "category": "FINANCE"
   },
   "tools": {

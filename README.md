@@ -1,6 +1,17 @@
-# Distilla
+# Distilla: Financial Analysis and Investment Research MCP Server
 
-Distilla is a Claude plugin for fundamental equity research. It connects Claude to the hosted Distilla MCP server at `https://api.distilla.ai/mcp`.
+Distilla is a Claude plugin and MCP server for financial analysis, investment research, and fundamental equity research. It connects Claude and other MCP clients to the hosted Distilla MCP server at `https://api.distilla.ai/mcp`.
+
+## What you can do with Distilla
+
+- **Company fundamentals.** Query financial statement line items and ratios for public companies, by fiscal year or quarter.
+- **Analyst consensus estimates.** Compare consensus estimates with reported actuals.
+- **Earnings.** Look up earnings dates, earnings filings, and earnings call transcripts.
+- **Stock prices and valuation.** Get historical daily stock prices and valuation multiples such as P/E and EV/EBITDA.
+- **Stock price moves.** See explanations for significant stock price moves.
+- **Peers and sectors.** Compare competitive peers by sector and product category.
+- **Stock screening.** Screen stocks on business drivers or earnings call commentary, across selected companies or regions.
+- **Research library.** Search Distilla's Public Library of research documents and investing podcasts, with source details.
 
 The hosted backend is proprietary. It is not in this repository. This repository contains the plugin manifest, the MCP connection file, and these documents. It does not contain secrets or private application code.
 
@@ -124,7 +135,7 @@ The `Validate plugin` GitHub workflow runs the same command on each pull request
 
 ## Version
 
-The plugin version is `1.0.0` in `.claude-plugin/plugin.json`. Bump that field when you want installed copies to receive a change.
+The plugin version is `1.0.2` in `.claude-plugin/plugin.json`. Bump that field when you want installed copies to receive a change.
 
 ## Security
 
