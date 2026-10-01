@@ -16,8 +16,8 @@ The MIT license applies to the files in this repository. It does not apply to th
 Clone this repository and load the plugin directory:
 
 ```bash
-git clone https://github.com/Distilla-AI/mcp-api-plugin.git
-cd mcp-api-plugin
+git clone https://github.com/Distilla-AI/distilla-mcp.git
+cd distilla-mcp
 claude --plugin-dir .
 ```
 
@@ -136,5 +136,5 @@ Distilla, Inc.
 
 - Website: [https://www.distilla.ai](https://www.distilla.ai)
 - Email: [support@distilla.ai](mailto:support@distilla.ai)
-- Repository: [https://github.com/Distilla-AI/mcp-api-plugin](https://github.com/Distilla-AI/mcp-api-plugin)
+- Repository: [https://github.com/Distilla-AI/distilla-mcp](https://github.com/Distilla-AI/distilla-mcp)
 
