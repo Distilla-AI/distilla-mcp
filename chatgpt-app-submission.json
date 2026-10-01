@@ -5,7 +5,11 @@
     "display_name": "Distilla",
     "subtitle": "Fundamental equity research",
     "description": "Research public companies with Distilla's financial data, earnings information, company driver screens, and Public Library. Explore available datasets, query and aggregate company data, run qualitative screens across selected companies or regions, and find research documents with source details. A Distilla account is required. Screen requests create jobs that may take time to complete; other research calls also count against account usage.",
-    "category": "FINANCE"
+    "category": "FINANCE",
+    "website_url": "https://agents.distilla.ai",
+    "support_url": "https://www.distilla.ai/contact-us",
+    "privacy_policy_url": "https://www.distilla.ai/privacy-policy",
+    "terms_of_service_url": "https://www.distilla.ai/terms-conditions"
   },
   "tools": {
     "ping": {
@@ -131,10 +135,10 @@
   },
   "test_cases": [
     {
-      "description": "Find a public company through a schema-guided entity query. Requires a demo account with company data.",
-      "user_prompt": "Find NVIDIA in Distilla's company data and show its recorded name and ticker.",
+      "description": "Summarize recorded stock price moves and their explanations through schema-guided entity queries. Requires a demo account with company and price explanation data.",
+      "user_prompt": "Summarize NVIDIA's price moves with Distilla and reasons over the last 3 months and establish patterns.",
       "tools_triggered": "list_queryable_entities, describe_queryable_entities, query_entity",
-      "expected_output": "A company row or an explicit no-match result, using fields confirmed by the company schema. The query tool returns a rows array and a truncated flag."
+      "expected_output": "Resolve NVIDIA's company ID, then query price_explanation rows for that company over an absolute three-month date range. Summarize the recorded moves and their stated reasons, and identify recurring patterns supported by the rows. Explain if no rows match or if the result is truncated."
     },
     {
       "description": "Aggregate company records by sector using the entity schema. Requires a demo account with company and sector data.",
@@ -149,10 +153,10 @@
       "expected_output": "The screen call first returns a job_id and queued status. Poll that job until done or error; on success summarize the matches, ranked companies, and coverage without claiming the queued response is a completed screen."
     },
     {
-      "description": "Start a qualitative earnings screen for named companies and poll its job. Requires a demo account with earnings data and screening access.",
-      "user_prompt": "Among NVIDIA, Apple, and Microsoft, which mentioned AI-driven cost savings as a guidance or margin lever in their last four earnings periods?",
-      "tools_triggered": "list_queryable_entities, describe_queryable_entities, query_entity, screen_earnings, get_screen_job",
-      "expected_output": "Resolve available company IDs, queue one earnings screen with those IDs and periods set to four, then poll by job_id. Report supported matches and coverage, including any company that could not be resolved or lacked evidence."
+      "description": "List recent Public Library podcasts and compare guest views with sell-side research. Requires a demo account with Public Library access, at least one podcast, and related research documents.",
+      "user_prompt": "List the latest Distilla podcasts in the Public Library and flag any where the guest's view seems to conflict with recent sell side consensus.",
+      "tools_triggered": "search_public_library, get_library_document",
+      "expected_output": "List recent Podcast documents from search results with titles and publication dates. Compare each guest's main view with recent Research documents on the same topics, and flag only conflicts that the returned sources support. Do not claim full Research document text is available; explain if no podcasts or comparable research exist."
     },
     {
       "description": "Search the bounded Public Library and inspect one returned document. Requires a demo account with Public Library access and at least one matching document.",
