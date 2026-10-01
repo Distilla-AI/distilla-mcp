@@ -88,7 +88,6 @@ Optional:
 
 | Field | Purpose |
 | --- | --- |
-| `icon` | Relative path to icon (existing `./assets/icon.png`) |
 | `defaultEnabled` | Claude `defaultEnabled` |
 | `defaultPrompts` | Codex / ChatGPT default prompts (if shared) |
 | `registry.name` | Official Registry namespace (`ai.distilla/mcp`) |
@@ -123,11 +122,13 @@ Optional:
 
 Platform-only content (not in SoT v1):
 
-- Claude: `$schema`, `icon` path layout under `.claude-plugin/`
+- Claude: `$schema`
 - Codex: `extensions.com.openai` (test cases, commerce, release notes)
 - ChatGPT: `tools` annotations/justifications, `test_cases`, `negative_test_cases`, `$schema`
 
 **Overlay strategy (v1):** Generator reads current platform file (or `manifest/overlays/*.json`), replaces only mapped shared paths, leaves the rest intact. Safer than regenerating OpenAI review blocks from scratch.
+
+On each generate, Claude `icon` and Codex `interface.composerIcon` / `interface.logo` are removed. A setting that points at a local image or font keeps the plugin held for review, because those files are not checked as code. The public logo stays on `registry.iconUrl` (`server.json` `icons[0].src`).
 
 ## Workflow
 

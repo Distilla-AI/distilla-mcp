@@ -43,7 +43,6 @@
     "codex": "Finance",
     "chatgpt": "FINANCE"
   },
-  "icon": "./assets/icon.png",
   "defaultEnabled": false,
   "registry": {
     "name": "ai.distilla/mcp",
