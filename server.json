@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "ai.distilla/mcp",
+  "title": "Distilla",
+  "description": "Grounded financial research for agents: filings, transcripts, news across US and Asia markets.",
+  "version": "1.0.2",
+  "websiteUrl": "https://agents.distilla.ai/",
+  "icons": [
+    {
+      "src": "https://agents.distilla.ai/icon.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "64x64"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.distilla.ai/mcp"
+    }
+  ]
+}
