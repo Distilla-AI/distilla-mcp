@@ -31,7 +31,7 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Distilla Investment Research",
-    "shortDescription": "Financial analysis and equity research",
+    "shortDescription": "Financial and equity research",
     "longDescription": "Distilla brings financial analysis and fundamental equity research to your AI assistant. Look up public-company fundamentals (financial statement line items and ratios), analyst consensus estimates, earnings dates, earnings filings and call transcripts, daily stock prices, and valuation multiples such as P/E and EV/EBITDA. See explanations for significant stock price moves, compare competitive peers by sector and product category, and run qualitative stock screens on business drivers or earnings-call commentary across selected companies or regions. Search Distilla's Public Library of research documents and investing podcasts, with source details. A Distilla account is required. Screen requests create jobs that may take time to complete; other research calls also count against account usage.",
     "developerName": "Distilla, Inc.",
     "category": "Finance",
@@ -65,31 +65,31 @@
               "description": "Summarize recorded stock price moves and their explanations through schema-guided entity queries. Requires a demo account with company and price explanation data.",
               "prompt": "Summarize NVIDIA's price moves with Distilla and reasons over the last 3 months and establish patterns.",
               "tools_triggered": "list_queryable_entities, describe_queryable_entities, query_entity",
-              "expected_behavior": "Resolve NVIDIA's company ID, then query price_explanation rows for that company over an absolute three-month date range. Summarize the recorded moves and their stated reasons, and identify recurring patterns supported by the rows. Explain if no rows match or if the result is truncated."
+              "expected_behavior": "Provide a chronological summary of returned NVIDIA price-explanation rows dated within the three months before the request, including the recorded moves and their stated explanations. Identify repeated themes only when supported by multiple rows. If no rows match or the page is truncated, say so. Present the explanations as Distilla-reported and do not add unsupported causal claims."
             },
             {
               "description": "Aggregate company records by sector using the entity schema. Requires a demo account with company and sector data.",
-              "prompt": "Count US-headquartered companies by sector in Distilla and show the 15 largest groups.",
+              "prompt": "Count US-headquartered companies by sector in Distilla, show the 15 largest groups, and tell me whether the results are truncated.",
               "tools_triggered": "list_queryable_entities, describe_queryable_entities, aggregate_entity",
-              "expected_behavior": "Up to 15 sector groups with counts, based on an allowed company entity, valid country filter, and schema-supported sector grouping or join. Explain that the result is one page and may be truncated."
+              "expected_behavior": "Return up to 15 sector names with company counts for records matching hq_country = US, ordered by count descending. Each displayed name and count must match the aggregate rows after resolving the returned sector IDs to names; equal counts may appear in either order. Report the aggregate's truncation status. If it is truncated, either disclose that the counts cover only the returned page or retrieve enough groups to establish the complete aggregation; state whether the final grouping is complete and do not treat a capped page as exhaustive. Describe the population as records matching the schema’s US filter; the schema labels US as ‘US-listed companies,’ so do not claim a stricter headquarters definition than the data supports."
             },
             {
-              "description": "Start a qualitative driver screen and poll its job. Requires a demo account entitled to screening with screen jobs enabled.",
-              "prompt": "Which US companies rely on AI hyperscaler capital spending as a main growth driver? Screen them and show the strongest matches.",
-              "tools_triggered": "screen_drivers, get_screen_job",
-              "expected_behavior": "The screen call first returns a job_id and queued status. Poll that job until done or error; on success summarize the matches, ranked companies, and coverage without claiming the queued response is a completed screen."
+              "description": "Screen a fixed set of three named companies for a qualitative driver match and poll the resulting job. Requires a demo account entitled to screening with screen jobs enabled.",
+              "prompt": "Screen Microsoft (MSFT), Broadcom (AVGO), and NVIDIA (NVDA) using their company-driver profiles to identify documented links between growth and AI hyperscaler capital spending. Show each returned screen score and supporting driver, include coverage, and treat equal scores as ties.",
+              "tools_triggered": "list_queryable_entities, describe_queryable_entities, query_entity, screen_drivers, get_screen_job",
+              "expected_behavior": "Return the matching companies from the named three-company set, ordered by match score, with each returned score and its supporting driver. Treat equal scores as a tie; do not imply a unique strongest company unless the returned scores distinguish one. Include coverage for this set and whether all three companies were evaluated. If the result summary and coverage totals disagree, report both and flag the discrepancy; do not reconcile them or imply a broader screen. Report results only after the screen finishes, or report its error if it fails."
             },
             {
-              "description": "List recent Public Library podcasts and compare guest views with sell-side research. Requires a demo account with Public Library access, at least one podcast, and related research documents.",
-              "prompt": "List the latest Distilla podcasts in the Public Library and flag any where the guest's view seems to conflict with recent sell side consensus.",
+              "description": "Compare one recent Public Library podcast about hyperscaler AI data-center financing with recent same-topic sell-side research. Requires a demo account with Public Library access and matching podcast and research documents.",
+              "prompt": "Find the latest Public Library podcast about hyperscaler AI data-center financing. Compare its guest's view with recent Distilla research on the same financing risks, and say whether the sources directly conflict or describe cautionary tension.",
               "tools_triggered": "search_public_library, get_library_document",
-              "expected_behavior": "List recent Podcast documents from search results with titles and publication dates. Compare each guest's main view with recent Research documents on the same topics, and flag only conflicts that the returned sources support. Do not claim full Research document text is available; explain if no podcasts or comparable research exist."
+              "expected_behavior": "Identify the latest retrieved Public Library Podcast about hyperscaler AI data-center financing, with its title and publication date, then inspect the returned podcast document. Compare the guest's stated view only with retrieved recent Research documents addressing the same financing risks. Distinguish directly opposing conclusions from cautionary tension or reinforcing concerns; do not claim a conflict unless the sources support opposite conclusions. Treat the returned documents as a sample, not exhaustive consensus, and say if no comparable research is returned."
             },
             {
               "description": "Search the bounded Public Library and inspect one returned document. Requires a demo account with Public Library access and at least one matching document.",
               "prompt": "Find recent Public Library research about NVIDIA AI data-center demand. Summarize the common points and show the summary and tags for one source document.",
               "tools_triggered": "search_public_library, get_library_document",
-              "expected_behavior": "A sourced summary plus one returned document's metadata, summary, and tags. Use a document_id from search results. Do not claim full Research document text is available; explain if no matching source exists."
+              "expected_behavior": "Provide a sourced synthesis of returned Public Library results about NVIDIA AI data-center demand, identify the sources, and show metadata, summary, and tags for one returned source document. Make clear the synthesis reflects retrieved sources, not exhaustive consensus. Research documents omit full text; say if no matching source exists."
             }
           ],
           "negative": [
@@ -108,7 +108,8 @@
           ]
         },
         "commerce": false,
-        "commerce_description": "This plugin does not sell products or process payments."
+        "commerce_description": "This plugin does not sell products or process payments.",
+        "demo_recording_url": "https://drive.google.com/file/d/1ZUQrD_9Rg4iWcAm1ly_mHejsPh_bkCrb/view?usp=drive_link"
       },
       "publication": {
         "release_notes": "Initial Distilla release with company data queries, aggregates, driver and earnings screens, and Public Library search."
