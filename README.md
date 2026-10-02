@@ -1,5 +1,7 @@
 # Distilla: Financial Analysis and Investment Research MCP Server
 
+[![M8ven Score](https://m8ven.ai/badge/mcp/distilla-ai-distilla-mcp-id7p9g?v=b5adbdaf6044d693709edbd871a46d8c)](https://m8ven.ai/mcp/distilla-ai-distilla-mcp-id7p9g?s=readme)
+
 Distilla is a Claude plugin and MCP server for financial analysis, investment research, and fundamental equity research. It connects Claude and other MCP clients to the hosted Distilla MCP server at `https://api.distilla.ai/mcp`.
 
 ## What you can do with Distilla
