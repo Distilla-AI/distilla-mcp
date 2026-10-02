@@ -67,7 +67,9 @@ def project_claude(core: dict[str, Any], existing: dict[str, Any]) -> dict[str, 
     out["displayName"] = core["displayName"]
     out["version"] = core["version"]
     out["description"] = core["descriptionShort"]
-    out["icon"] = core["icon"]
+    # Local image paths keep the plugin held: reviewers do not scan PNG/font
+    # bytes as code. The public logo stays on registry.iconUrl.
+    out.pop("icon", None)
     out["author"] = dict(core["author"])
     out["homepage"] = core["urls"]["homepage"]
     out["repository"] = core["urls"]["repository"]
@@ -99,6 +101,8 @@ def project_codex(core: dict[str, Any], existing: dict[str, Any]) -> dict[str, A
     interface["supportURL"] = core["urls"]["support"]
     interface["privacyPolicyURL"] = core["urls"]["privacy"]
     interface["termsOfServiceURL"] = core["urls"]["terms"]
+    interface.pop("composerIcon", None)
+    interface.pop("logo", None)
     out["interface"] = interface
     return out
 
