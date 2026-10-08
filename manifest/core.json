@@ -12,7 +12,7 @@
     "url": "https://www.distilla.ai"
   },
   "urls": {
-    "homepage": "https://www.distilla.ai",
+    "homepage": "https://agents.distilla.ai",
     "agents": "https://agents.distilla.ai",
     "mcp": "https://api.distilla.ai/mcp",
     "repository": "https://github.com/Distilla-AI/distilla-mcp",
