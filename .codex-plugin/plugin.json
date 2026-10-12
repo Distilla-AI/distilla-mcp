@@ -52,9 +52,7 @@
       "Summarize NVIDIA's price moves with Distilla and reasons over the last 3 months and establish patterns.",
       "Count US-headquartered companies by sector in Distilla and show the 15 largest groups.",
       "Find recent Public Library research about NVIDIA AI data-center demand."
-    ],
-    "composerIcon": "./assets/icon.png",
-    "logo": "./assets/icon.png"
+    ]
   },
   "extensions": {
     "com.openai": {
