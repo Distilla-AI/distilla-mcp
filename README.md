@@ -137,7 +137,7 @@ The `Validate plugin` GitHub workflow runs the same command on each pull request
 
 ## Version
 
-The plugin version is `1.0.2` in `.claude-plugin/plugin.json`. Bump that field when you want installed copies to receive a change.
+The plugin version is `1.0.3` in `.claude-plugin/plugin.json`. Bump that field when you want installed copies to receive a change.
 
 ## Security
 
