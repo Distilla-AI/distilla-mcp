@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "distilla",
   "displayName": "Distilla Investment Research",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Financial analysis and investment research for AI agents. Query public-company financial statements, analyst consensus estimates, earnings calendars and call transcripts, historical stock prices, and valuation multiples; screen stocks by business drivers and earnings commentary; and search research documents and investing podcasts.",
   "icon": "./assets/icon.png",
   "author": {
@@ -31,5 +31,5 @@
     "stocks",
     "mcp"
   ],
-  "defaultEnabled": false
+  "defaultEnabled": true
 }

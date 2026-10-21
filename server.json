@@ -3,7 +3,7 @@
   "name": "ai.distilla/mcp",
   "title": "Distilla",
   "description": "Grounded financial research for agents: filings, transcripts, news across US and Asia markets.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "websiteUrl": "https://agents.distilla.ai/",
   "icons": [
     {
