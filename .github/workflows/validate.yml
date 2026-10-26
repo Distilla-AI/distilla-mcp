@@ -25,5 +25,7 @@ jobs:
           python3 -m json.tool chatgpt-app-submission.json > /dev/null
       - name: Check manifests match SoT
         run: python3 scripts/generate_manifests.py --check
+      - name: Run declared-tool contract tests
+        run: python3 -m unittest discover -s tests -v
       - name: Run claude plugin validate
         run: npx --yes @anthropic-ai/claude-code@latest plugin validate .
