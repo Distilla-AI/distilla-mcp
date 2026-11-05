@@ -11,6 +11,7 @@ Distilla is a Claude plugin and MCP server for financial analysis, investment re
 - **Earnings.** Look up earnings dates, earnings filings, and earnings call transcripts.
 - **Stock prices and valuation.** Get historical daily stock prices and valuation multiples such as P/E and EV/EBITDA.
 - **Stock price moves.** See explanations for significant stock price moves.
+- **Company website changes.** Read kept summaries when Distilla detects meaningful company website updates (`website_change` via `query_entity`).
 - **Peers and sectors.** Compare competitive peers by sector and product category.
 - **Stock screening.** Screen stocks on business drivers or earnings call commentary, across selected companies or regions.
 - **Research library.** Search Distilla's Public Library of research documents and investing podcasts, with source details.
@@ -87,7 +88,7 @@ No tool changes your Distilla account, your watchlists, or Distilla research dat
 | `ping` | Read only | A test message |
 | `list_queryable_entities` | Read only | No arguments |
 | `describe_queryable_entities` | Read only | Entity names |
-| `query_entity` | Read only | Entity name, fields, filters, sort, joins, and row limit |
+| `query_entity` | Read only | Entity name, fields, filters, sort, joins, and row limit (includes `website_change` when listed by `list_queryable_entities`) |
 | `aggregate_entity` | Read only | Entity name, aggregate functions, group-by fields, filters, and row limit |
 | `screen_drivers` | Creates a screen job | Screen criteria text, company ids or region codes, and `top_n` |
 | `screen_earnings` | Creates a screen job | Screen criteria text, company ids or region codes, periods, and `top_n` |
