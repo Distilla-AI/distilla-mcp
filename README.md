@@ -68,13 +68,14 @@ Ask Claude in plain language after the server is connected. The tools you can ca
 2. Among NVIDIA, Apple, and Microsoft, which cited AI-driven cost savings as a guidance or margin lever in their last four earnings periods?
 3. Count non-delisted US-headquartered companies by sector, and show the 15 largest sector groups.
 4. Find public-library research from the past year on NVIDIA AI data-center demand. Summarize common and conflicting views, and list the source documents.
+5. List recent kept company website changes for DocuSign and summarize what Distilla says changed on each page.
 
 ## Permissions
 
 The plugin opens one remote MCP connection. It does not run local software, hooks, or commands.
 
-| Server | Transport | URL | Authentication |
-| --- | --- | --- | --- |
+| Server     | Transport               | URL                           | Authentication                                                                                                         |
+| ---------- | ----------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | `distilla` | HTTPS (Streamable HTTP) | `https://api.distilla.ai/mcp` | OAuth 2.0 with PKCE (S256) through Clerk at `https://clerk.distilla.ai`. Scopes: `profile`, `email`, `offline_access`. |
 
 The server also accepts a Distilla API key (`ak_...`) as a Bearer token. The plugin does not use or store an API key.
@@ -83,18 +84,18 @@ The server also accepts a Distilla API key (`ak_...`) as a Bearer token. The plu
 
 No tool changes your Distilla account, your watchlists, or Distilla research data. Each call except `ping` also adds one usage record. See [Privacy and data handling](#privacy-and-data-handling).
 
-| Tool | Access | What the call sends to Distilla |
-| --- | --- | --- |
-| `ping` | Read only | A test message |
-| `list_queryable_entities` | Read only | No arguments |
-| `describe_queryable_entities` | Read only | Entity names |
-| `query_entity` | Read only | Entity name, fields, filters, sort, joins, and row limit (includes `website_change` when listed by `list_queryable_entities`) |
-| `aggregate_entity` | Read only | Entity name, aggregate functions, group-by fields, filters, and row limit |
-| `screen_drivers` | Creates a screen job | Screen criteria text, company ids or region codes, and `top_n` |
-| `screen_earnings` | Creates a screen job | Screen criteria text, company ids or region codes, periods, and `top_n` |
-| `get_screen_job` | Read only | A `job_id` from your own screen |
-| `search_public_library` | Read only | Search query text, and optional document types, tickers, date range, and brokers |
-| `get_library_document` | Read only | A document id |
+| Tool                          | Access               | What the call sends to Distilla                                                                                               |
+| ----------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `ping`                        | Read only            | A test message                                                                                                                |
+| `list_queryable_entities`     | Read only            | No arguments                                                                                                                  |
+| `describe_queryable_entities` | Read only            | Entity names                                                                                                                  |
+| `query_entity`                | Read only            | Entity name, fields, filters, sort, joins, and row limit (includes `website_change` when listed by `list_queryable_entities`) |
+| `aggregate_entity`            | Read only            | Entity name, aggregate functions, group-by fields, filters, and row limit                                                     |
+| `screen_drivers`              | Creates a screen job | Screen criteria text, company ids or region codes, and `top_n`                                                                |
+| `screen_earnings`             | Creates a screen job | Screen criteria text, company ids or region codes, periods, and `top_n`                                                       |
+| `get_screen_job`              | Read only            | A `job_id` from your own screen                                                                                               |
+| `search_public_library`       | Read only            | Search query text, and optional document types, tickers, date range, and brokers                                              |
+| `get_library_document`        | Read only            | A document id                                                                                                                 |
 
 A screen job is a record that the server writes for your account. It holds the screen inputs and, when the job ends, the result. Only your account can read it with `get_screen_job`.
 
@@ -151,4 +152,3 @@ Distilla, Inc.
 - Website: [https://www.distilla.ai](https://www.distilla.ai)
 - Email: [support@distilla.ai](mailto:support@distilla.ai)
 - Repository: [https://github.com/Distilla-AI/distilla-mcp](https://github.com/Distilla-AI/distilla-mcp)
-
