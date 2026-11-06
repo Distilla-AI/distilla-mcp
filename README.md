@@ -14,7 +14,7 @@ Distilla is a Claude plugin and MCP server for financial analysis, investment re
 - **Company website changes.** Read kept summaries when Distilla detects meaningful company website updates (`website_change` via `query_entity`).
 - **Peers and sectors.** Compare competitive peers by sector and product category.
 - **Stock screening.** Screen stocks on business drivers or earnings call commentary, across selected companies or regions.
-- **Research library.** Search Distilla's Public Library of research documents and investing podcasts, with source details.
+- **Research library.** Search Distilla's Public Library of research documents, investing podcasts, YouTube transcripts, and industry newsletters (`search_public_library`), with source details.
 
 The hosted backend is proprietary. It is not in this repository. This repository contains the plugin manifest, the MCP connection file, and these documents. It does not contain secrets or private application code.
 
@@ -69,6 +69,7 @@ Ask Claude in plain language after the server is connected. The tools you can ca
 3. Count non-delisted US-headquartered companies by sector, and show the 15 largest sector groups.
 4. Find public-library research from the past year on NVIDIA AI data-center demand. Summarize common and conflicting views, and list the source documents.
 5. List recent kept company website changes for DocuSign and summarize what Distilla says changed on each page.
+6. Search Public Library newsletters about AI infrastructure spend and summarize the latest editions Distilla returns.
 
 ## Permissions
 

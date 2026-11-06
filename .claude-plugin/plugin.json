@@ -3,7 +3,7 @@
   "name": "distilla",
   "displayName": "Distilla Investment Research",
   "version": "1.0.4",
-  "description": "Financial analysis and investment research for AI agents. Query public-company financial statements, analyst consensus estimates, earnings calendars and call transcripts, historical stock prices, valuation multiples, and company website changes; screen stocks by business drivers and earnings commentary; and search research documents and investing podcasts.",
+  "description": "Financial analysis and investment research for AI agents. Query public-company financial statements, analyst consensus estimates, earnings calendars and call transcripts, historical stock prices, valuation multiples, and company website changes; screen stocks by business drivers and earnings commentary; and search research documents, investing podcasts, YouTube transcripts, and industry newsletters.",
   "icon": "./assets/icon.png",
   "author": {
     "name": "Distilla, Inc.",

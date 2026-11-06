@@ -1,7 +1,7 @@
 {
   "name": "distilla",
   "version": "1.0.4",
-  "description": "Financial analysis and investment research for AI agents. Query public-company financial statements, analyst consensus estimates, earnings calendars and call transcripts, historical stock prices, valuation multiples, and company website changes; screen stocks by business drivers and earnings commentary; and search research documents and investing podcasts.",
+  "description": "Financial analysis and investment research for AI agents. Query public-company financial statements, analyst consensus estimates, earnings calendars and call transcripts, historical stock prices, valuation multiples, and company website changes; screen stocks by business drivers and earnings commentary; and search research documents, investing podcasts, YouTube transcripts, and industry newsletters.",
   "author": {
     "name": "Distilla, Inc.",
     "email": "support@distilla.ai",
@@ -32,7 +32,7 @@
   "interface": {
     "displayName": "Distilla Investment Research",
     "shortDescription": "Financial and equity research",
-    "longDescription": "Distilla brings financial analysis and fundamental equity research to your AI assistant. Look up public-company fundamentals (financial statement line items and ratios), analyst consensus estimates, earnings dates, earnings filings and call transcripts, daily stock prices, and valuation multiples such as P/E and EV/EBITDA. See explanations for significant stock price moves, read kept summaries of meaningful company website changes, compare competitive peers by sector and product category, and run qualitative stock screens on business drivers or earnings-call commentary across selected companies or regions. Search Distilla's Public Library of research documents and investing podcasts, with source details. A Distilla account is required. Screen requests create jobs that may take time to complete; other research calls also count against account usage.",
+    "longDescription": "Distilla brings financial analysis and fundamental equity research to your AI assistant. Look up public-company fundamentals (financial statement line items and ratios), analyst consensus estimates, earnings dates, earnings filings and call transcripts, daily stock prices, and valuation multiples such as P/E and EV/EBITDA. See explanations for significant stock price moves, read kept summaries of meaningful company website changes, compare competitive peers by sector and product category, and run qualitative stock screens on business drivers or earnings-call commentary across selected companies or regions. Search Distilla's Public Library of research documents, investing podcasts, YouTube transcripts, and industry newsletters, with source details. A Distilla account is required. Screen requests create jobs that may take time to complete; other research calls also count against account usage.",
     "developerName": "Distilla, Inc.",
     "category": "Finance",
     "capabilities": [
@@ -43,7 +43,7 @@
       "Explain stock price moves",
       "Read company website change summaries",
       "Screen stocks by drivers and earnings commentary",
-      "Search research documents and podcasts"
+      "Search research documents, podcasts, and newsletters"
     ],
     "websiteURL": "https://agents.distilla.ai",
     "supportURL": "https://www.distilla.ai/contact-us",
@@ -53,7 +53,8 @@
       "Summarize NVIDIA's price moves with Distilla and reasons over the last 3 months and establish patterns.",
       "Count US-headquartered companies by sector in Distilla and show the 15 largest groups.",
       "Find recent Public Library research about NVIDIA AI data-center demand.",
-      "List recent kept company website changes for DocuSign and summarize what Distilla says changed."
+      "List recent kept company website changes for DocuSign and summarize what Distilla says changed.",
+      "Search Public Library newsletters about AI infrastructure spend and summarize the latest editions."
     ],
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/icon.png"
