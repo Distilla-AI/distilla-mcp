@@ -1,8 +1,8 @@
 # Distilla MCP plugin — website change reader (docs)
 
-**Status:** README updated (ship after staging `agent2-mcp-shim` exposes `website_change`)  
+**Status:** README + manifest copy updated (v1.0.4)  
 **Owner:** Lucio Pagni  
-**Branch:** `luciopagni/eng-770-mcp-website-change`  
+**Branch:** `luciopagni/eng-770-mcp-website-change-manifest-copy`  
 **Linear:** ENG-770  
 **Implementation SoT:** Distilla-AI/`pipeline-data`
 `docs/company-website-tracking-mcp-website-change-spec.md`
@@ -50,9 +50,9 @@ can answer website-change questions.
 
 ## Acceptance
 
-- [ ] Pipeline-data MCP allowlist live and `website_change` queryable
-- [ ] README bullet + tool wording match the hosted catalog
-- [ ] Manifest regenerated / version bumped if description fields change
+- [x] Pipeline-data MCP allowlist live and `website_change` queryable
+- [x] README bullet + tool wording match the hosted catalog
+- [x] Manifest regenerated / version bumped if description fields change
 
 ---
 

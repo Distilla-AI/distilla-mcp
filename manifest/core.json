@@ -2,10 +2,10 @@
   "id": "distilla",
   "displayName": "Distilla Investment Research",
   "chatgptDisplayName": "Distilla",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "subtitle": "Financial and equity research",
-  "descriptionShort": "Financial analysis and investment research for AI agents. Query public-company financial statements, analyst consensus estimates, earnings calendars and call transcripts, historical stock prices, and valuation multiples; screen stocks by business drivers and earnings commentary; and search research documents and investing podcasts.",
-  "descriptionLong": "Distilla brings financial analysis and fundamental equity research to your AI assistant. Look up public-company fundamentals (financial statement line items and ratios), analyst consensus estimates, earnings dates, earnings filings and call transcripts, daily stock prices, and valuation multiples such as P/E and EV/EBITDA. See explanations for significant stock price moves, compare competitive peers by sector and product category, and run qualitative stock screens on business drivers or earnings-call commentary across selected companies or regions. Search Distilla's Public Library of research documents and investing podcasts, with source details. A Distilla account is required. Screen requests create jobs that may take time to complete; other research calls also count against account usage.",
+  "descriptionShort": "Financial analysis and investment research for AI agents. Query public-company financial statements, analyst consensus estimates, earnings calendars and call transcripts, historical stock prices, valuation multiples, and company website changes; screen stocks by business drivers and earnings commentary; and search research documents, investing podcasts, YouTube transcripts, and industry newsletters.",
+  "descriptionLong": "Distilla brings financial analysis and fundamental equity research to your AI assistant. Look up public-company fundamentals (financial statement line items and ratios), analyst consensus estimates, earnings dates, earnings filings and call transcripts, daily stock prices, and valuation multiples such as P/E and EV/EBITDA. See explanations for significant stock price moves, read kept summaries of meaningful company website changes, compare competitive peers by sector and product category, and run qualitative stock screens on business drivers or earnings-call commentary across selected companies or regions. Search Distilla's Public Library of research documents, investing podcasts, YouTube transcripts, and industry newsletters, with source details. A Distilla account is required. Screen requests create jobs that may take time to complete; other research calls also count against account usage.",
   "author": {
     "name": "Distilla, Inc.",
     "email": "support@distilla.ai",
@@ -47,7 +47,7 @@
   "defaultEnabled": true,
   "registry": {
     "name": "ai.distilla/mcp",
-    "description": "Grounded financial research for agents: filings, transcripts, news across US and Asia markets.",
+    "description": "Grounded financial research: filings, podcasts, newsletters, website changes, US & Asia.",
     "iconUrl": "https://agents.distilla.ai/icon.png",
     "iconSizes": "64x64"
   }
