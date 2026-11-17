@@ -5,7 +5,9 @@ exposes `Newsletter` in `PUBLIC_LIBRARY_DOC_TYPES`)
 **Owner:** Lucio Pagni  
 **Branch:** `luciopagni/eng-770-mcp-website-change-manifest-copy`  
 **Implementation SoT:** Distilla-AI/`pipeline-data`
-`docs/mcp-public-library-newsletter-spec.md`
+`docs/mcp-public-library-newsletter-spec.md`  
+**Sibling:** [`mcp-public-library-websitescrape-reader.md`](./mcp-public-library-websitescrape-reader.md)
+(industry / association WebsiteScrape docs)
 
 ---
 
