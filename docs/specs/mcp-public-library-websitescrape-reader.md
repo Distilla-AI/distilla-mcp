@@ -1,6 +1,7 @@
 # Distilla MCP plugin — Public Library WebsiteScrape reader (docs)
 
-**Status:** Spec (docs not updated yet)  
+**Status:** README + manifest copy updated (v1.0.5; ship after pipeline-data
+exposes `WebsiteScrape` in `PUBLIC_LIBRARY_DOC_TYPES` and deploys the shim)  
 **Owner:** Lucio Pagni  
 **Branch:** `luciopagni/mcp-public-library-websitescrape-docs`  
 **Implementation SoT:** Distilla-AI/`pipeline-data`
@@ -84,12 +85,12 @@ Avoid implying every company homepage is scraped into the library.
 ## Acceptance
 
 - [ ] Pipeline-data `PUBLIC_LIBRARY_DOC_TYPES` includes `WebsiteScrape` and
-      shim is deployed
-- [ ] README Research library bullet mentions YouTube, newsletters, **and**
+      shim is deployed (PR https://github.com/Distilla-AI/pipeline-data/pull/2439)
+- [x] README Research library bullet mentions YouTube, newsletters, **and**
       industry / association website scrapes
-- [ ] At least one README example prompt for WebsiteScrape-style search
-- [ ] Manifest regenerated; short/long descriptions include the new wording
-- [ ] Copy does not conflate WebsiteScrape with “company website changes”
+- [x] At least one README example prompt for WebsiteScrape-style search
+- [x] Manifest regenerated; short/long descriptions include the new wording
+- [x] Copy does not conflate WebsiteScrape with “company website changes”
 
 ---
 

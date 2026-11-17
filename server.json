@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "ai.distilla/mcp",
   "title": "Distilla",
-  "description": "Grounded financial research: filings, podcasts, newsletters, website changes, US & Asia.",
-  "version": "1.0.4",
+  "description": "Grounded research: filings, podcasts, newsletters, industry releases, site changes, US & Asia.",
+  "version": "1.0.5",
   "websiteUrl": "https://agents.distilla.ai/",
   "icons": [
     {
