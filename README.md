@@ -37,26 +37,20 @@ claude --plugin-dir .
 
 `--plugin-dir` loads the plugin for that session. It does not publish the plugin.
 
-## Install from the plugin directory
+## Install from Claude or ChatGPT
 
-> **Not available yet.** Anthropic has not listed Distilla in the community marketplace. The commands in this section do not work until Anthropic lists the plugin. Until then, use [Install for a local test](#install-for-a-local-test).
+Distilla is listed in Anthropic's plugin directory and ChatGPT's plugin directory. Prefer the product install buttons (they open the live listings):
 
-After Anthropic lists this plugin, add the community marketplace and install Distilla:
+- [Add to Claude](https://claude.ai/customize/plugins/id/3c217f4a-b2b1-4b8a-8439-36e1be4e33e7%40anthropic-plugin-directory)
+- [Add to ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6abd95f89a84819197ac3091c46646d7)
 
-```text
-/plugin marketplace add anthropics/claude-plugins-community
-/plugin install distilla@claude-community
-```
+Or open [distilla.ai/mcp](https://www.distilla.ai/mcp) / [agents.distilla.ai](https://agents.distilla.ai) and use **Add to Claude** / **Add to ChatGPT**.
+
+For Claude Code, Cursor, and other MCP clients, paste `https://api.distilla.ai/mcp` (see [Install for a local test](#install-for-a-local-test) for a local plugin-dir session).
 
 ## Enable and sign in
 
 The plugin stays off until you enable it. For a local `--plugin-dir` session, enable `distilla` in `/plugin` if Claude shows it as off.
-
-After Anthropic lists the plugin, you can also run:
-
-```bash
-claude plugin enable distilla@claude-community
-```
 
 The server uses OAuth 2.0 with PKCE. When Claude connects, the server asks you to sign in. In Claude Code, run `/mcp`, select `distilla`, and complete the Distilla sign-in in your browser. This repository does not store credentials. Do not add tokens or keys to these files.
 
